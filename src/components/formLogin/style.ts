@@ -1,50 +1,24 @@
 import styled from "styled-components";
 
-export const ContainerForm = styled.div`
+export const ContainerForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  margin-top: 50px;
 
   width: 80%;
-  height: 70%;
+  height: 250px;
 
-  background: rgba(248, 298, 241, 0.8);
   border-radius: 5px;
-
-  .test {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    width: 100%;
-    height: 100px;
-
-    background: rgba(85, 110, 230, 0.25);
-    border-radius: 5px 5px 0 0;
-
-    img {
-      width: 100px;
-    }
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
-  }
 
   a {
     text-decoration: none;
-    color: rgba(85, 110, 230, 1);
+    color: var(--white);
   }
 
   @media only screen and (min-width: 767px) {
-    width: 87%;
+    width: 350px;
   }
 `;
 
@@ -52,7 +26,7 @@ export const LinkBox = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 `;
 
 export const ButtonLogin = styled.button`
@@ -61,8 +35,8 @@ export const ButtonLogin = styled.button`
 
   border: none;
   border-radius: 5px;
-  background: rgba(85, 110, 230, 1);
-  color: white;
+  background: var(--teal);
+  color: var(--white);
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;

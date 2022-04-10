@@ -32,5 +32,7 @@ export default createGlobalStyle`
   svg{
     cursor: pointer;
   }
- 
-  `;
+  img {
+    cursor: pointer;
+  }
+`;

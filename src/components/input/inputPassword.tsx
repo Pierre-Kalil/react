@@ -11,6 +11,7 @@ export const InputPassword = ({
   type,
   name,
   error = "",
+  borderSchema = false,
   colorSchema = false,
   ...rest
 }: InputProps) => {
@@ -22,7 +23,7 @@ export const InputPassword = ({
 
   return (
     <Container>
-      <InputContainer colorSchema={colorSchema}>
+      <InputContainer colorSchema={colorSchema} borderSchema={borderSchema}>
         <input
           {...register(name)}
           type={passwordShown ? "text" : "password"}
