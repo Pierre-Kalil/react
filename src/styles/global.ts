@@ -10,6 +10,14 @@ export default createGlobalStyle`
     font-weight: normal;
   }
 
+  :root{
+    --blue: #007bff;
+    --green: #28a745;
+    --teal: #20c997;
+    --white: #fff;
+    --dark: #343a40;
+  }
+
   li{
     list-style: none;
   }
