@@ -16,6 +16,8 @@ export default createGlobalStyle`
     --teal: #20c997;
     --white: #ffffff;
     --dark: #343a40;
+    --orange: #fd7e14;
+    --grayStandOut: #7E7E7E;
   }
 
   li{
