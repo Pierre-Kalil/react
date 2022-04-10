@@ -8,9 +8,11 @@ import { LoginProps } from "./types";
 import { InputPassword } from "../input/inputPassword";
 import { Input } from "../input/input";
 import { Button } from "../button";
+import { useAuth } from "../../providers/auth";
 
 export const FormLogin = () => {
   const navigate = useNavigate();
+  const { signin } = useAuth();
 
   const {
     register,
@@ -22,7 +24,7 @@ export const FormLogin = () => {
   });
 
   const onSubmitData = (data: LoginProps) => {
-    // signin(data, navigate);
+    signin(data, navigate);
     reset();
   };
 

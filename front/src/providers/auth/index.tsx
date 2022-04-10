@@ -10,15 +10,13 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState({ id: "", name: "", email: "" });
-  const [token, setToken] = useState(
-    localStorage.getItem("@kenzieDoc:token") || ""
-  );
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
   const signin = async (data: LoginProps, navigate: NavigateFunction) => {
     await api
       .post("/login", data)
       .then((res) => {
         localStorage.clear();
-        localStorage.setItem("@kenzieDoc:token", res.data.token);
+        localStorage.setItem("token", res.data.token);
         setToken(res.data.token);
         navigate("/dashboard");
         toast.success("Bem vindo!");

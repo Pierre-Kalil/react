@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
+import { useAuth } from "../../providers/auth";
 import { Mobile } from "./mobile";
 import { Nav } from "./style";
 
 export const NavBar = () => {
-  const [user, setUser] = useState("");
-
-  useEffect(() => {
-    setUser(localStorage.getItem("user") || "");
-  }, [user]);
+  const { user } = useAuth();
 
   return (
     <>
       <Nav>
-        <div>
-          Olá, <span>{user}</span>
-        </div>
+        <div>{!user ? <></> : <>Olá, {user.name} </>}</div>
         <Mobile />
       </Nav>
     </>

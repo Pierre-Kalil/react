@@ -5,18 +5,25 @@ export const HomeContainerMain = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   background: rgba(0, 123, 245, 100);
   z-index: 1;
   position: relative;
+  @media (min-width: 768px) {
+    background-position: center;
+    height: 100vh;
+  }
 `;
 
 export const HomeImageBackground = styled.div`
-  height: 100vh;
+  min-height: 85vh;
+  height: auto;
   background-image: url(${home});
   background-size: cover;
   opacity: 0.1;
   z-index: 0;
+
   @media (max-width: 500px) {
     background-position: center;
   }
@@ -27,7 +34,8 @@ export const HomeContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  min-height: 90vh;
+  height: auto;
   position: absolute;
 
   .title {
@@ -45,5 +53,8 @@ export const HomeContent = styled.div`
         font-size: 70px;
       }
     }
+  }
+  @media (min-width: 768px) {
+    height: 85vh;
   }
 `;
