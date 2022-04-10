@@ -40,5 +40,10 @@ export const HomeContent = styled.div`
     h2 {
       color: var(--white);
     }
+    @media (min-width: 768px) {
+      h1 {
+        font-size: 70px;
+      }
+    }
   }
 `;
