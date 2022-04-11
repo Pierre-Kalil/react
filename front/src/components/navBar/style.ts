@@ -12,7 +12,7 @@ export const Nav = styled.div`
   height: 15vh;
   padding: 5px;
   background: var(--white);
-  /* position: fixed; */
+  position: fixed;
 
   span {
     color: #fff;

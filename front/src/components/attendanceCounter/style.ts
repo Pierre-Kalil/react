@@ -6,7 +6,7 @@ export const StatusContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
+  min-height: 85vh;
   height: auto;
   margin-top: 80px;
 

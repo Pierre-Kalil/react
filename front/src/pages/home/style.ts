@@ -4,7 +4,6 @@ import home from "../../assets/home.jpg";
 export const HomeContainerMain = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   min-height: 100vh;
   height: auto;
   background: rgba(0, 123, 245, 100);
@@ -12,13 +11,14 @@ export const HomeContainerMain = styled.div`
   position: relative;
   @media (min-width: 768px) {
     background-position: center;
-    height: 100vh;
+    height: auto;
   }
 `;
 
 export const HomeImageBackground = styled.div`
-  min-height: 85vh;
+  min-height: 100vh;
   height: auto;
+  margin-top: 80px;
   background-image: url(${home});
   background-size: cover;
   opacity: 0.1;
@@ -36,6 +36,8 @@ export const HomeContent = styled.div`
   width: 100%;
   min-height: 90vh;
   height: auto;
+  margin-top: 10px;
+
   position: absolute;
 
   .title {
@@ -55,6 +57,6 @@ export const HomeContent = styled.div`
     }
   }
   @media (min-width: 768px) {
-    height: 85vh;
+    min-height: 100vh;
   }
 `;
