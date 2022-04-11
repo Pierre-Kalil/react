@@ -4,11 +4,13 @@ import { Nav } from "./style";
 
 export const NavBar = () => {
   const { user } = useAuth();
-
+  console.log(user);
   return (
     <>
       <Nav>
-        <div>{!user ? <></> : <>Olá, {user.name} </>}</div>
+        <div>
+          {user.name.length < 1 ? <>ClinMed</> : <>Olá, {user.name} </>}
+        </div>
         <Mobile />
       </Nav>
     </>

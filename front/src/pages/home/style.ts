@@ -9,6 +9,7 @@ export const HomeContainerMain = styled.div`
   background: rgba(0, 123, 245, 100);
   z-index: 1;
   position: relative;
+
   @media (min-width: 768px) {
     background-position: center;
     height: auto;
@@ -16,9 +17,8 @@ export const HomeContainerMain = styled.div`
 `;
 
 export const HomeImageBackground = styled.div`
-  min-height: 100vh;
+  min-height: 85vh;
   height: auto;
-  margin-top: 80px;
   background-image: url(${home});
   background-size: cover;
   opacity: 0.1;
@@ -34,7 +34,7 @@ export const HomeContent = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 90vh;
+  min-height: 80vh;
   height: auto;
   margin-top: 10px;
 
@@ -57,6 +57,6 @@ export const HomeContent = styled.div`
     }
   }
   @media (min-width: 768px) {
-    min-height: 100vh;
+    min-height: 80vh;
   }
 `;

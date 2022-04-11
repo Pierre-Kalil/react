@@ -12,7 +12,7 @@ export const Nav = styled.div`
   height: 15vh;
   padding: 5px;
   background: var(--white);
-  position: fixed;
+  /* position: fixed; */
 
   span {
     color: #fff;
@@ -63,9 +63,6 @@ export const MobileStyle = styled.div<MobileProps>`
   display: none;
   width: 2rem;
   height: 2rem;
-  position: fixed;
-  top: 15px;
-  right: 20px;
   z-index: 4;
   cursor: pointer;
 

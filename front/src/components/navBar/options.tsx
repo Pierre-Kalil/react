@@ -14,7 +14,7 @@ export const Options = ({ open }: MobileProps) => {
   return (
     <>
       <Ul open={open}>
-        {user ? (
+        {user.name.length > 1 ? (
           <>
             <li onClick={() => navigate("/dashboard")}>Home</li>
             <li onClick={() => navigate("/record")}>Prontuário</li>

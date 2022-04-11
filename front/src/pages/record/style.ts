@@ -5,7 +5,7 @@ export const RecordContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 150vh;
+  min-height: 120vh;
   background: var(--blue);
   position: relative;
 
@@ -13,7 +13,7 @@ export const RecordContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 150px 0 10px 0;
+    margin: 10px 10px;
 
     input {
       padding: 0.5rem;
@@ -22,36 +22,7 @@ export const RecordContainer = styled.div`
     }
   }
 
-  .boxForm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: row wrap;
-    width: 90%;
-    height: 70vh;
-  }
-
-  .record-info {
-    width: 300px;
-    height: 150px;
-    margin: 2px;
-    background: var(--white);
-
-    .title {
-      width: 100%;
-      background: #ccc;
-      text-align: left;
-    }
-  }
-`;
-
-export const FormStyle = styled.form`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-
   @media (min-width: 768px) {
-    width: 70%;
+    min-height: 100vh;
   }
 `;

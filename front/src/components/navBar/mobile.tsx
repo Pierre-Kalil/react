@@ -1,11 +1,9 @@
-import { MobileStyle } from "./style"
-import { useState } from "react"
-import { Options } from "./options"
-
-
+import { MobileStyle } from "./style";
+import { useState } from "react";
+import { Options } from "./options";
 
 export const Mobile = () => {
-  const [open, setOpen] = useState(false) 
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -16,5 +14,5 @@ export const Mobile = () => {
       </MobileStyle>
       <Options open={open} />
     </>
-  )
-}
+  );
+};
