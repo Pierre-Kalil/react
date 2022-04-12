@@ -6,12 +6,16 @@ import { RecordCard } from "./types";
 
 export const Card = (record: RecordCard) => {
   const { patient } = useUser();
-  const { setAttendanceReturn, attendanceReturn, setAttendanceList } =
-    useRecord();
+  const {
+    setAttendanceReturn,
+    attendanceReturn,
+    setAttendanceList,
+    attendanceList,
+  } = useRecord();
 
   const handleAttendanceReturn = () => {
-    setAttendanceList((prevState) => [...prevState, patient.name]);
-    setAttendanceReturn((prevState) => prevState + 1);
+    setAttendanceList([...attendanceList, patient.name]);
+    setAttendanceReturn(attendanceReturn + 1);
     const count = attendanceReturn;
     localStorage.setItem("@CliniMed:attendanceReturn", count.toString());
   };

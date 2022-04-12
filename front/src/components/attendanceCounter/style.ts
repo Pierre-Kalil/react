@@ -27,6 +27,10 @@ export const StatusContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    span:nth-child(1) {
+      font-weight: bold;
+    }
   }
   .box-circle:nth-child(3) .circle {
     width: 250px;
@@ -37,7 +41,7 @@ export const StatusContainer = styled.div`
       display: none;
     }
     span {
-      margin: 2px 0;
+      margin-top: 1px;
     }
   }
   span {

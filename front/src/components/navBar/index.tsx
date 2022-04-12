@@ -8,7 +8,7 @@ export const NavBar = () => {
     <>
       <Nav>
         <div>
-          {user.name.length < 1 ? (
+          {user.name.length === 0 ? (
             <>
               <h2>ClinMed</h2>
             </>

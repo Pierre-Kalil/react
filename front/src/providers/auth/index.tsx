@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .post("/login", data)
       .then((res) => {
         localStorage.clear();
-        localStorage.setItem("@CliniMed:token", JSON.stringify(res.data.token));
+        localStorage.setItem("@CliniMed:token", res.data.token);
         setToken(res.data.token);
         navigate("/dashboard");
         return toast.success("Bem vindo!");
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   useEffect(() => {
-    if (token) {
+    if (!!token) {
       setUser(jwt_decode<Decoded>(token));
     }
   }, [token]);

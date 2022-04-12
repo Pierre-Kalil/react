@@ -8,7 +8,7 @@ import {
 } from "../home/style";
 import { Button } from "../../components/button";
 import { useUser } from "../../providers/user";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRecord } from "../../providers/record";
 import { ModalRecords } from "../../components/modalRecords";
 
@@ -19,12 +19,18 @@ export const Record = () => {
 
   const handleId = () => {
     localStorage.setItem("@CliniMed:patientID", seletcted);
+    filterUser();
   };
 
   const handleModal = () => {
     filterRecords(patientID);
     setOpenModal(true);
   };
+
+  useEffect(() => {
+    // localStorage.setItem("@CliniMed:patientID", JSON.stringify(seletcted));
+    filterUser();
+  }, [seletcted]);
 
   return (
     <>

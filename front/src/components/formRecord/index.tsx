@@ -55,7 +55,7 @@ export const FormRecord = ({ patientSelect }: FormRecordProps) => {
     e.preventDefault();
     createRecord(formValues);
     setCurrentStep(0);
-    setAttendance((prevState) => prevState + 1);
+    setAttendance(attendance + 1);
     const count = attendance;
     localStorage.setItem("@CliniMed:attendance", count.toString());
   }

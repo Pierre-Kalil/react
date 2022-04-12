@@ -11,6 +11,7 @@ export const RecordContainer = styled.div`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    width: 100%;
     margin: 10px 10px;
 
     input {
@@ -28,7 +29,9 @@ export const RecordContainer = styled.div`
 
   .patient-box {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
+    width: 300px;
     color: var(--white);
 
     span {

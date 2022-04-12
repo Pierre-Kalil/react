@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../providers/auth";
+import { useRecord } from "../../providers/record";
 import { MobileProps, Ul } from "./style";
 
 export const Options = ({ open }: MobileProps) => {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
+  const { setAttendanceList } = useRecord();
 
   const handleSignoup = () => {
     localStorage.clear();
+    setAttendanceList([]);
+    setUser({ id: "", name: "", email: "" });
     navigate("/");
   };
 

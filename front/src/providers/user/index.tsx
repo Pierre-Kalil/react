@@ -31,8 +31,8 @@ export const UserProvider = ({ children }: AuthProviderProps) => {
     if (token) {
       filterUser();
     }
-  }, [token, patientID]);
-
+  }, [token]);
+  console.log(patient);
   return (
     <UserContext.Provider
       value={{ filterUser, patient, patientID, setPatientID }}
