@@ -18,6 +18,7 @@ export default createGlobalStyle`
     --dark: #343a40;
     --orange: #fd7e14;
     --grayStandOut: #7E7E7E;
+    --gray: #ccc;
     --warning: #ffc107;
   }
 

@@ -18,7 +18,7 @@ export const UserProvider = ({ children }: AuthProviderProps) => {
       .get(`/user/${id}`)
       .then((res) => {
         localStorage.clear();
-        // console.log(res);
+        localStorage.setItem("patient", res.data.name);
         setPatient(res.data);
       })
       .catch((_) => toast.error("Paciente não localizado."));
