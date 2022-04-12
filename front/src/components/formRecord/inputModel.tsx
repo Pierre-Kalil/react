@@ -1,37 +1,105 @@
-import { useState } from "react";
-import { FiPlusCircle } from "react-icons/fi";
-import { RecordInfo } from "./style";
-import { InputFieldProps, InputModelProps } from "./types";
+import { Button } from "../button";
+import { Select } from "./select";
+import { InputModelProps } from "./types";
 
-export const InputModel = ({ children, title }: InputModelProps) => {
-  const [inputFields, setInputFields] = useState<InputFieldProps[]>([
-    {
-      type: "text",
-      name: "problem",
-      placeholder: "Problema",
-    },
-  ]);
-  const handleInputCreate = () => {
-    const newfield = { type: "text", name: "problem", placeholder: "Problema" };
-    setInputFields([...inputFields, newfield]);
-  };
+export const InputModel = ({
+  handleInputChange,
+  formValues,
+  steps,
+  currentStep,
+  setCurrentStep,
+}: InputModelProps) => {
   return (
     <>
-      <RecordInfo className="record-info">
-        <span className="title">{title}</span>
-        <div className="input-first">
-          {inputFields.map((item, index) => (
-            <input type="text" placeholder="Problema" required />
-          ))}
-          <FiPlusCircle onClick={handleInputCreate} />
+      <div className="fields">
+        <div className="fields">
+          <div className="field">
+            <input
+              type="text"
+              placeholder="Problema"
+              name={
+                steps[currentStep].id === "SUBJECT"
+                  ? "subjectProblem"
+                  : steps[currentStep].id === "OBJECT"
+                  ? "objectProblem"
+                  : steps[currentStep].id === "ASSESSMENT"
+                  ? "assessmentProblem"
+                  : "planProblem"
+              }
+              onChange={handleInputChange}
+              value={
+                steps[currentStep].id === "SUBJECT"
+                  ? formValues.subjectProblem
+                  : steps[currentStep].id === "OBJECT"
+                  ? formValues.objectProblem
+                  : steps[currentStep].id === "ASSESSMENT"
+                  ? formValues.assessmentProblem
+                  : formValues.planProblem
+              }
+              required={true}
+            />
+          </div>
+          <div className="field">
+            <Select
+              placeholder="Situação"
+              name={
+                steps[currentStep].id === "SUBJECT"
+                  ? "subjectSituation"
+                  : steps[currentStep].id === "OBJECT"
+                  ? "objectSituation"
+                  : steps[currentStep].id === "ASSESSMENT"
+                  ? "assessmentSituation"
+                  : "planSituation"
+              }
+              options={["", "Ativo", "Encerrado"]}
+              onChange={handleInputChange}
+              value={
+                steps[currentStep].id === "SUBJECT"
+                  ? formValues.subjectSituation
+                  : steps[currentStep].id === "OBJECT"
+                  ? formValues.objectSituation
+                  : steps[currentStep].id === "ASSESSMENT"
+                  ? formValues.assessmentSituation
+                  : formValues.planSituation
+              }
+              required={true}
+            />
+          </div>
+          <div className="field">
+            <textarea
+              placeholder="Observação"
+              name={
+                steps[currentStep].id === "SUBJECT"
+                  ? "subjectComments"
+                  : steps[currentStep].id === "OBJECT"
+                  ? "objectComments"
+                  : steps[currentStep].id === "ASSESSMENT"
+                  ? "assessmentComments"
+                  : "planComments"
+              }
+              onChange={handleInputChange}
+              value={
+                steps[currentStep].id === "SUBJECT"
+                  ? formValues.subjectComments
+                  : steps[currentStep].id === "OBJECT"
+                  ? formValues.objectComments
+                  : steps[currentStep].id === "ASSESSMENT"
+                  ? formValues.assessmentComments
+                  : formValues.planComments
+              }
+              required={true}
+            />
+          </div>
         </div>
-        <select required>
-          <option></option>
-          <option>Ativo</option>
-          <option>Encerrado</option>
-        </select>
-        <textarea placeholder="Observação" rows={3} cols={31} required />
-      </RecordInfo>
+      </div>
+      {currentStep < steps.length - 1 && (
+        <Button
+          name="Proximo"
+          callback={() => setCurrentStep((prevState) => prevState + 1)}
+        >
+          Proximo
+        </Button>
+      )}
     </>
   );
 };

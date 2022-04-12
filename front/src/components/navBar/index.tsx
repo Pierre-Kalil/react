@@ -4,7 +4,6 @@ import { Nav } from "./style";
 
 export const NavBar = () => {
   const { user } = useAuth();
-  console.log(user);
   return (
     <>
       <Nav>
