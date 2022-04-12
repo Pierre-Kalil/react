@@ -8,13 +8,12 @@ import {
 } from "../home/style";
 import { Button } from "../../components/button";
 import { useUser } from "../../providers/user";
-import { useEffect, useState } from "react";
-import { UserProps } from "../../providers/user/types";
+import { useState } from "react";
 import { useRecord } from "../../providers/record";
-import { useAuth } from "../../providers/auth";
+import { ModalRecords } from "../../components/modalRecords";
 
 export const Record = () => {
-  const { filterRecords } = useRecord();
+  const { filterRecords, openModal, setOpenModal } = useRecord();
   const { filterUser, patient, patientID } = useUser();
   const [seletcted, setSelected] = useState("");
 
@@ -22,10 +21,15 @@ export const Record = () => {
     localStorage.setItem("@CliniMed:patientID", seletcted);
   };
 
-  console.log(patient);
+  const handleModal = () => {
+    filterRecords(patientID);
+    setOpenModal(true);
+  };
+
   return (
     <>
       <HomeContainerMain>
+        {openModal ? <ModalRecords /> : <></>}
         <NavBar />
         <HomeImageBackground />
         <HomeContent>
@@ -35,9 +39,7 @@ export const Record = () => {
                 <div className="search patient-box">
                   <span>Paciente:</span>
                   <span>{patient.name}</span>
-                  <button onClick={() => filterRecords(patientID)}>
-                    Ver Consultas
-                  </button>
+                  <button onClick={handleModal}>Ver Consultas</button>
                 </div>
               ) : (
                 <></>

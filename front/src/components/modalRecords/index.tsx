@@ -1,12 +1,17 @@
 import { useRecord } from "../../providers/record";
+import { Card } from "../card";
 import { ModalStyle } from "./style";
+import { AiFillCloseSquare } from "react-icons/ai";
 
 export const ModalRecords = () => {
-  const { patientRecords } = useRecord();
+  const { patientRecords, setOpenModal } = useRecord();
 
   return (
     <>
-      <ModalStyle></ModalStyle>
+      <ModalStyle>
+        <AiFillCloseSquare onClick={() => setOpenModal(false)} />
+        {patientRecords && patientRecords.map((item) => <Card record={item} />)}
+      </ModalStyle>
     </>
   );
 };

@@ -1,10 +1,10 @@
 import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { DataProps } from "../../components/formRecord/types";
+import { DataRecordProps } from "../../components/formRecord/types";
 import api from "../../services/api";
 import { AuthProviderProps } from "../auth/types";
 import { useUser } from "../user";
-import { RecordProviderProps } from "./types";
+import { RecordProps, RecordProviderProps } from "./types";
 
 const RecordContext = createContext<RecordProviderProps>(
   {} as RecordProviderProps
@@ -12,8 +12,9 @@ const RecordContext = createContext<RecordProviderProps>(
 
 export const RecordProvider = ({ children }: AuthProviderProps) => {
   const { patientID } = useUser();
-  const [patientRecords, setPatientRecords] = useState([]);
-  const createRecord = async (data: DataProps) => {
+  const [patientRecords, setPatientRecords] = useState<RecordProps[]>([]);
+  const [openModal, setOpenModal] = useState(false);
+  const createRecord = async (data: DataRecordProps) => {
     await api
       .post("/record", {
         userId: patientID,
@@ -54,7 +55,13 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <RecordContext.Provider
-      value={{ createRecord, filterRecords, patientRecords }}
+      value={{
+        createRecord,
+        filterRecords,
+        patientRecords,
+        openModal,
+        setOpenModal,
+      }}
     >
       {children}
     </RecordContext.Provider>

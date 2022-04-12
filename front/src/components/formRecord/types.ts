@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { UserProps } from "../../providers/user/types";
 
-export interface DataProps {
+export interface DataRecordProps {
   subjectProblem: string;
   subjectSituation: string;
   subjectComments: string;
@@ -17,7 +17,7 @@ export interface DataProps {
 }
 
 export interface InputModelProps {
-  formValues: DataProps;
+  formValues: DataRecordProps;
   steps: any;
   currentStep: number;
   setCurrentStep: Dispatch<SetStateAction<number>>;

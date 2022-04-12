@@ -15,7 +15,7 @@ export const listRecordsService = async () => {
 };
 
 export const filterRecordService = async (userId: any) => {
-  const record = await RecordModel.findOne({ userId: userId["userId"] });
+  const record = await RecordModel.find({ userId: userId["userId"] });
   if (!record) {
     throw new ErrorHandler("Record not found", 400);
   }
