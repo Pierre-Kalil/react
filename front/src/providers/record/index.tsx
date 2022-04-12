@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { DataRecordProps } from "../../components/formRecord/types";
 import api from "../../services/api";
@@ -16,6 +16,9 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [attendance, setAttendance] = useState(0);
   const [attendanceReturn, setAttendanceReturn] = useState(0);
+  const [attendanceList, setAttendanceList] = useState(
+    JSON.parse(localStorage.getItem("@CliniMed:attendanceList") || "[]")
+  );
 
   const createRecord = async (data: DataRecordProps) => {
     await api
@@ -43,7 +46,6 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
         },
       })
       .then((_) => {
-        localStorage.clear();
         return toast.success("Prontuário salvo com sucesso!");
       })
       .catch((_) => toast.error("Algo saiu errado. Tente novamente."));
@@ -54,6 +56,13 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
       setPatientRecords(res.data);
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem(
+      "@CliniMed:attendanceList",
+      JSON.stringify(attendanceList)
+    );
+  }, [attendanceList]);
 
   return (
     <RecordContext.Provider
@@ -67,6 +76,8 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
         setAttendance,
         attendanceReturn,
         setAttendanceReturn,
+        attendanceList,
+        setAttendanceList,
       }}
     >
       {children}

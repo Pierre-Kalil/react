@@ -2,25 +2,28 @@ import { useRecord } from "../../providers/record";
 import { StatusContainer } from "./style";
 
 export const AttendanceCounter = () => {
-  const { attendance, attendanceReturn } = useRecord();
+  const { attendanceList } = useRecord();
   return (
     <>
       <StatusContainer>
-        <div>
+        <div className="box-circle">
+          <span>Total atendimentos</span>
           <div className="circle">
             {localStorage.getItem("@CliniMed:attendance")}
           </div>
-          <span>Total atendimentos</span>
         </div>
-        <div>
+        <div className="box-circle">
+          <span>Total retornos</span>
           <div className="circle">
             {localStorage.getItem("@CliniMed:attendanceReturn")}
           </div>
-          <span>Total retornos</span>
         </div>
-        <div>
-          <div className="circle">Lista</div>
+        <div className="box-circle">
           <span>Lista de clients</span>
+          <div className="circle">
+            {attendanceList &&
+              attendanceList.map((item) => <span>{item}</span>)}
+          </div>
         </div>
       </StatusContainer>
     </>

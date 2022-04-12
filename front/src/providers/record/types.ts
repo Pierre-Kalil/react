@@ -34,4 +34,6 @@ export interface RecordProviderProps {
   setAttendance: Dispatch<SetStateAction<number>>;
   attendanceReturn: number;
   setAttendanceReturn: Dispatch<SetStateAction<number>>;
+  attendanceList: string[];
+  setAttendanceList: Dispatch<SetStateAction<string[]>>;
 }

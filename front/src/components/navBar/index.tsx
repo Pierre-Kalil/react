@@ -8,7 +8,15 @@ export const NavBar = () => {
     <>
       <Nav>
         <div>
-          {user.name.length < 1 ? <>ClinMed</> : <>Olá, {user.name} </>}
+          {user.name.length < 1 ? (
+            <>
+              <h2>ClinMed</h2>
+            </>
+          ) : (
+            <>
+              Olá, <h2>{user.name}</h2>{" "}
+            </>
+          )}
         </div>
         <Mobile />
       </Nav>

@@ -13,8 +13,9 @@ export const StatusContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 120px;
-    height: 120px;
+    flex-direction: column;
+    width: 150px;
+    height: 150px;
     margin: 5px;
     border: 3px solid var(--teal);
     border-radius: 50%;
@@ -22,8 +23,26 @@ export const StatusContainer = styled.div`
     font-size: 24px;
     font-weight: bold;
   }
+  .box-circle {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .box-circle:nth-child(3) .circle {
+    width: 250px;
+    border-radius: 10px;
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    span {
+      margin: 2px 0;
+    }
+  }
   span {
     color: var(--warning);
+    font-size: 24px;
   }
 
   @media (min-width: 768px) {

@@ -1,12 +1,16 @@
 import { useRecord } from "../../providers/record";
+import { useUser } from "../../providers/user";
 import { Button } from "../button";
 import { CardStyle } from "./style";
 import { RecordCard } from "./types";
 
 export const Card = (record: RecordCard) => {
-  const { setAttendanceReturn, attendanceReturn } = useRecord();
+  const { patient } = useUser();
+  const { setAttendanceReturn, attendanceReturn, setAttendanceList } =
+    useRecord();
 
   const handleAttendanceReturn = () => {
+    setAttendanceList((prevState) => [...prevState, patient.name]);
     setAttendanceReturn((prevState) => prevState + 1);
     const count = attendanceReturn;
     localStorage.setItem("@CliniMed:attendanceReturn", count.toString());

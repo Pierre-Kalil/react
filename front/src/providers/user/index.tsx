@@ -24,7 +24,7 @@ export const UserProvider = ({ children }: AuthProviderProps) => {
       .then((res) => {
         setPatient(res.data);
       })
-      .catch((_) => toast.error("Paciente não localizado."));
+      .catch((_) => console.log("Paciente não localizado."));
   };
 
   useEffect(() => {
