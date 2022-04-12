@@ -37,6 +37,11 @@ export const Ul = styled.ul<MobileProps>`
     font-size: 18px;
     cursor: pointer;
 
+    :hover {
+      color: var(--teal);
+      transition: 0.3s;
+    }
+
     a {
       color: #fff;
 

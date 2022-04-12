@@ -20,6 +20,7 @@ export const Record = () => {
   const handleId = () => {
     localStorage.setItem("@CliniMed:patientID", seletcted);
     filterUser();
+    setSelected("");
   };
 
   const handleModal = () => {
@@ -28,10 +29,9 @@ export const Record = () => {
   };
 
   useEffect(() => {
-    // localStorage.setItem("@CliniMed:patientID", JSON.stringify(seletcted));
     filterUser();
   }, [seletcted]);
-
+  console.log(!patientID);
   return (
     <>
       <HomeContainerMain>
@@ -41,7 +41,7 @@ export const Record = () => {
         <HomeContent>
           <RecordContainer>
             <div className="search">
-              {patient.name.length > 0 ? (
+              {!!patientID ? (
                 <div className="search patient-box">
                   <span>{patient.name}</span>
                   <Button name="Consultas" callback={handleModal}>
