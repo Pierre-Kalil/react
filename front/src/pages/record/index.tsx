@@ -6,6 +6,7 @@ import {
   HomeContent,
   HomeImageBackground,
 } from "../home/style";
+import { Button } from "../../components/button";
 
 export const Record = () => {
   return (
@@ -14,21 +15,15 @@ export const Record = () => {
         <NavBar />
         <HomeImageBackground />
         <HomeContent>
-          {/* <div className="search">
-            <input name="search" placeholder="ID do paciente" />
-            <button>Historico</button>
-          </div> */}
-          <FormRecord />
+          <RecordContainer>
+            <div className="search">
+              <input name="search" placeholder="ID do paciente" />
+              <Button name="Buscar">Buscar</Button>
+            </div>
+            <FormRecord />
+          </RecordContainer>
         </HomeContent>
       </HomeContainerMain>
-      {/* <RecordContainer>
-        <NavBar />
-        <div className="search">
-          <input name="search" placeholder="ID do paciente" />
-          <button>Historico</button>
-        </div>
-        <FormRecord />
-      </RecordContainer> */}
     </>
   );
 };

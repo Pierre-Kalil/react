@@ -36,7 +36,7 @@ export const HomeContent = styled.div`
   width: 100%;
   min-height: 80vh;
   height: auto;
-  margin-top: 10px;
+  margin-top: 15vh;
 
   position: absolute;
 

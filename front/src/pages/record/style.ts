@@ -5,9 +5,6 @@ export const RecordContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 120vh;
-  background: var(--blue);
-  position: relative;
 
   .search {
     display: flex;
@@ -20,9 +17,5 @@ export const RecordContainer = styled.div`
       border: 1px solid var(--teal);
       border-radius: 5px;
     }
-  }
-
-  @media (min-width: 768px) {
-    min-height: 100vh;
   }
 `;

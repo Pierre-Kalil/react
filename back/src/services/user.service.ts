@@ -10,3 +10,8 @@ export const createUserService = async (data: any) => {
   const user = await UserModel.create(data);
   return user;
 };
+
+export const filterUserService = async (id: string) => {
+  const user = await UserModel.findOne({ id: id });
+  return user;
+};
