@@ -8,15 +8,21 @@ import {
 } from "../home/style";
 import { Button } from "../../components/button";
 import { useUser } from "../../providers/user";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserProps } from "../../providers/user/types";
+import { useRecord } from "../../providers/record";
+import { useAuth } from "../../providers/auth";
 
 export const Record = () => {
-  const { filterUser, patientID, setPatientID } = useUser();
-  const [patientSelect, setPatientSelect] = useState<string | any>(
-    localStorage.getItem("patient")
-  );
-  const handleUser = (id: string) => filterUser(id);
+  const { filterRecords } = useRecord();
+  const { filterUser, patient, patientID } = useUser();
+  const [seletcted, setSelected] = useState("");
+
+  const handleId = () => {
+    localStorage.setItem("@CliniMed:patientID", seletcted);
+  };
+
+  console.log(patient);
   return (
     <>
       <HomeContainerMain>
@@ -25,27 +31,30 @@ export const Record = () => {
         <HomeContent>
           <RecordContainer>
             <div className="search">
-              {patientSelect ? (
+              {patient.name.length > 0 ? (
                 <div className="search patient-box">
                   <span>Paciente:</span>
-                  <span>{patientSelect}</span>
+                  <span>{patient.name}</span>
+                  <button onClick={() => filterRecords(patientID)}>
+                    Ver Consultas
+                  </button>
                 </div>
               ) : (
                 <></>
               )}
               <div className="search input">
                 <input
-                  value={patientID}
-                  onChange={(e) => setPatientID(e.target.value)}
+                  value={seletcted}
+                  onChange={(e) => setSelected(e.target.value)}
                   name="search"
                   placeholder="ID do paciente"
                 />
-                <Button name="Buscar" callback={() => handleUser(patientID)}>
+                <Button name="Buscar" callback={handleId}>
                   Buscar
                 </Button>
               </div>
             </div>
-            <FormRecord patientSelect={patientSelect} />
+            <FormRecord patientSelect={patient} />
           </RecordContainer>
         </HomeContent>
       </HomeContainerMain>

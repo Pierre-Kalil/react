@@ -3,7 +3,8 @@ import { InputModel } from "./inputModel";
 import { useState } from "react";
 import { useRecord } from "../../providers/record";
 import { FormBlock, FormStyle } from "./style";
-import { DataProps } from "./types";
+import { DataProps, FormRecordProps } from "./types";
+import { UserProps } from "../../providers/user/types";
 
 export const steps = [
   {
@@ -24,7 +25,7 @@ export const steps = [
   },
 ];
 
-export const FormRecord = ({ patientSelect }: string | any) => {
+export const FormRecord = ({ patientSelect }: FormRecordProps) => {
   const { createRecord } = useRecord();
   const [currentStep, setCurrentStep] = useState(0);
   const [formValues, setFormValues] = useState<DataProps>({
@@ -60,7 +61,7 @@ export const FormRecord = ({ patientSelect }: string | any) => {
   return (
     <>
       <FormStyle>
-        {!patientSelect ? <FormBlock /> : <></>}
+        {patientSelect.name.length < 1 ? <FormBlock /> : <></>}
         <form className="steps-form" onSubmit={handleSubmit}>
           <div className="fields-container">
             <p>{steps[currentStep].title}</p>

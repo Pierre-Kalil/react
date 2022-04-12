@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { UserProps } from "../../providers/user/types";
 
 export interface DataProps {
   subjectProblem: string;
@@ -21,4 +22,8 @@ export interface InputModelProps {
   currentStep: number;
   setCurrentStep: Dispatch<SetStateAction<number>>;
   handleInputChange: (event: any) => void;
+}
+
+export interface FormRecordProps {
+  patientSelect: { id: string; name: string; email: string; password: string };
 }

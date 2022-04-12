@@ -19,22 +19,22 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
         userId: patientID,
         subject: {
           problem: data.subjectProblem,
-          situation: data.subjectSituation,
+          situation: data.subjectSituation != "Encerrado" ? true : false,
           comments: data.subjectComments,
         },
         object: {
           problem: data.objectProblem,
-          situation: data.objectSituation,
+          situation: data.objectSituation != "Encerrado" ? true : false,
           comments: data.objectComments,
         },
         assessment: {
           problem: data.assessmentProblem,
-          situation: data.assessmentSituation,
+          situation: data.assessmentSituation != "Encerrado" ? true : false,
           comments: data.assessmentComments,
         },
         plan: {
           problem: data.planProblem,
-          situation: data.planSituation,
+          situation: data.planSituation != "Encerrado" ? true : false,
           comments: data.planComments,
         },
       })
@@ -47,6 +47,7 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
 
   const filterRecords = async (patientID: string) => {
     await api.get(`/record/${patientID}`).then((res) => {
+      console.log(res);
       setPatientRecords(res.data);
     });
   };

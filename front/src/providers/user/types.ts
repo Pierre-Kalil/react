@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface UserProps {
-  filterUser: (id: string) => void;
+  filterUser: () => void;
   patient: {
     id: string;
     name: string;

@@ -10,16 +10,19 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState({ id: "", name: "", email: "" });
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState(
+    localStorage.getItem("@CliniMed:token") || ""
+  );
+
   const signin = async (data: LoginProps, navigate: NavigateFunction) => {
     await api
       .post("/login", data)
       .then((res) => {
         localStorage.clear();
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("@CliniMed:token", JSON.stringify(res.data.token));
         setToken(res.data.token);
-        navigate("/dashboard");
         toast.success("Bem vindo!");
+        navigate("/dashboard");
       })
       .catch((_) => toast.error("Algo saiu errado. Tente novamente."));
   };
@@ -29,6 +32,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setUser(jwt_decode<Decoded>(token));
     }
   }, [token]);
+
   return (
     <AuthContext.Provider value={{ signin, token, user, setUser }}>
       {children}
