@@ -8,7 +8,6 @@ export const StatusContainer = styled.div`
   width: 100%;
   min-height: 85vh;
   height: auto;
-  margin-top: 80px;
 
   .circle {
     display: flex;
@@ -17,7 +16,7 @@ export const StatusContainer = styled.div`
     width: 120px;
     height: 120px;
     margin: 5px;
-    border: 2px solid var(--teal);
+    border: 3px solid var(--teal);
     border-radius: 50%;
     color: var(--warning);
     font-size: 24px;
@@ -33,7 +32,7 @@ export const StatusContainer = styled.div`
     .circle {
       width: 200px;
       height: 200px;
-      font-size: 34px;
+      font-size: 35px;
     }
   } ;
 `;

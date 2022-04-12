@@ -37,9 +37,10 @@ export const Record = () => {
             <div className="search">
               {patient.name.length > 0 ? (
                 <div className="search patient-box">
-                  <span>Paciente:</span>
                   <span>{patient.name}</span>
-                  <button onClick={handleModal}>Ver Consultas</button>
+                  <Button name="Consultas" callback={handleModal}>
+                    Consultas
+                  </Button>
                 </div>
               ) : (
                 <></>

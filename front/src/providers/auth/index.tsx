@@ -21,8 +21,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         localStorage.clear();
         localStorage.setItem("@CliniMed:token", JSON.stringify(res.data.token));
         setToken(res.data.token);
-        toast.success("Bem vindo!");
         navigate("/dashboard");
+        return toast.success("Bem vindo!");
       })
       .catch((_) => toast.error("Algo saiu errado. Tente novamente."));
   };

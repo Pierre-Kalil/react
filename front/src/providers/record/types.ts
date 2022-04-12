@@ -30,4 +30,8 @@ export interface RecordProviderProps {
   patientRecords: RecordProps[];
   openModal: boolean;
   setOpenModal: Dispatch<SetStateAction<boolean>>;
+  attendance: number;
+  setAttendance: Dispatch<SetStateAction<number>>;
+  attendanceReturn: number;
+  setAttendanceReturn: Dispatch<SetStateAction<number>>;
 }

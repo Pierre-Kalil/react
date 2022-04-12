@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRecord } from "../../providers/record";
 import { FormBlock, FormStyle } from "./style";
 import { DataRecordProps, FormRecordProps } from "./types";
-import { UserProps } from "../../providers/user/types";
 
 export const steps = [
   {
@@ -26,7 +25,7 @@ export const steps = [
 ];
 
 export const FormRecord = ({ patientSelect }: FormRecordProps) => {
-  const { createRecord } = useRecord();
+  const { createRecord, setAttendance, attendance } = useRecord();
   const [currentStep, setCurrentStep] = useState(0);
   const [formValues, setFormValues] = useState<DataRecordProps>({
     subjectProblem: "",
@@ -56,6 +55,9 @@ export const FormRecord = ({ patientSelect }: FormRecordProps) => {
     e.preventDefault();
     createRecord(formValues);
     setCurrentStep(0);
+    setAttendance((prevState) => prevState + 1);
+    const count = attendance;
+    localStorage.setItem("@CliniMed:attendance", count.toString());
   }
 
   return (

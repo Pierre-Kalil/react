@@ -1,8 +1,17 @@
+import { useRecord } from "../../providers/record";
 import { Button } from "../button";
 import { CardStyle } from "./style";
 import { RecordCard } from "./types";
 
 export const Card = (record: RecordCard) => {
+  const { setAttendanceReturn, attendanceReturn } = useRecord();
+
+  const handleAttendanceReturn = () => {
+    setAttendanceReturn((prevState) => prevState + 1);
+    const count = attendanceReturn;
+    localStorage.setItem("@CliniMed:attendanceReturn", count.toString());
+  };
+
   return (
     <CardStyle>
       <div>
@@ -29,7 +38,7 @@ export const Card = (record: RecordCard) => {
         {record.record.plan.situation}
         {record.record.plan.comments}
       </div>
-      <Button name="Atualizar"></Button>
+      <Button name="Atualizar" callback={handleAttendanceReturn}></Button>
     </CardStyle>
   );
 };

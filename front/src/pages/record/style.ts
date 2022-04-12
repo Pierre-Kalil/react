@@ -10,8 +10,8 @@ export const RecordContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     margin: 10px 10px;
-    height: 100px;
 
     input {
       padding: 0.6rem;
@@ -23,22 +23,18 @@ export const RecordContainer = styled.div`
     width: 100px;
     height: 33px;
     margin-left: 2px;
+    background: var(--teal);
   }
 
   .patient-box {
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    height: 100px;
     color: var(--white);
 
-    span:nth-child(2) {
-      color: var(--teal);
+    span {
+      color: var(--white);
       font-weight: bold;
+      font-size: 22px;
     }
-  }
-
-  .input {
-    flex-wrap: wrap;
   }
 `;

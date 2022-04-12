@@ -14,6 +14,9 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
   const { patientID } = useUser();
   const [patientRecords, setPatientRecords] = useState<RecordProps[]>([]);
   const [openModal, setOpenModal] = useState(false);
+  const [attendance, setAttendance] = useState(0);
+  const [attendanceReturn, setAttendanceReturn] = useState(0);
+
   const createRecord = async (data: DataRecordProps) => {
     await api
       .post("/record", {
@@ -41,14 +44,13 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
       })
       .then((_) => {
         localStorage.clear();
-        toast.success("Prontuário salvo com sucesso!");
+        return toast.success("Prontuário salvo com sucesso!");
       })
       .catch((_) => toast.error("Algo saiu errado. Tente novamente."));
   };
 
   const filterRecords = async (patientID: string) => {
     await api.get(`/record/${patientID}`).then((res) => {
-      console.log(res);
       setPatientRecords(res.data);
     });
   };
@@ -61,6 +63,10 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
         patientRecords,
         openModal,
         setOpenModal,
+        attendance,
+        setAttendance,
+        attendanceReturn,
+        setAttendanceReturn,
       }}
     >
       {children}
