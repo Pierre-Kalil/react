@@ -7,8 +7,13 @@ import {
   HomeImageBackground,
 } from "../home/style";
 import { Button } from "../../components/button";
+import { useUser } from "../../providers/user";
+import { useState } from "react";
 
 export const Record = () => {
+  const { filterUser } = useUser();
+  const [userID, setUserID] = useState("");
+  const handleUser = (id: string) => filterUser(id);
   return (
     <>
       <HomeContainerMain>
@@ -17,8 +22,15 @@ export const Record = () => {
         <HomeContent>
           <RecordContainer>
             <div className="search">
-              <input name="search" placeholder="ID do paciente" />
-              <Button name="Buscar">Buscar</Button>
+              <input
+                value={userID}
+                onChange={(e) => setUserID(e.target.value)}
+                name="search"
+                placeholder="ID do paciente"
+              />
+              <Button name="Buscar" callback={() => handleUser(userID)}>
+                Buscar
+              </Button>
             </div>
             <FormRecord />
           </RecordContainer>
