@@ -1,8 +1,9 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { DataProps } from "../../components/formRecord/types";
 import api from "../../services/api";
 import { AuthProviderProps } from "../auth/types";
+import { useUser } from "../user";
 import { RecordProviderProps } from "./types";
 
 const RecordContext = createContext<RecordProviderProps>(
@@ -10,10 +11,12 @@ const RecordContext = createContext<RecordProviderProps>(
 );
 
 export const RecordProvider = ({ children }: AuthProviderProps) => {
+  const { patientID } = useUser();
+  const [patientRecords, setPatientRecords] = useState([]);
   const createRecord = async (data: DataProps) => {
     await api
       .post("/record", {
-        userId: "b384841b-50aa-4b38-906d-51ba0f911920",
+        userId: patientID,
         subject: {
           problem: data.subjectProblem,
           situation: data.subjectSituation,
@@ -42,8 +45,16 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
       .catch((_) => toast.error("Algo saiu errado. Tente novamente."));
   };
 
+  const filterRecords = async (patientID: string) => {
+    await api.get(`/record/${patientID}`).then((res) => {
+      setPatientRecords(res.data);
+    });
+  };
+
   return (
-    <RecordContext.Provider value={{ createRecord }}>
+    <RecordContext.Provider
+      value={{ createRecord, filterRecords, patientRecords }}
+    >
       {children}
     </RecordContext.Provider>
   );

@@ -7,6 +7,7 @@ import { UserProps } from "./types";
 const UserContext = createContext<UserProps>({} as UserProps);
 
 export const UserProvider = ({ children }: AuthProviderProps) => {
+  const [patientID, setPatientID] = useState("");
   const [patient, setPatient] = useState({
     id: "",
     name: "",
@@ -24,7 +25,9 @@ export const UserProvider = ({ children }: AuthProviderProps) => {
       .catch((_) => toast.error("Paciente não localizado."));
   };
   return (
-    <UserContext.Provider value={{ filterUser, patient }}>
+    <UserContext.Provider
+      value={{ filterUser, patient, patientID, setPatientID }}
+    >
       {children}
     </UserContext.Provider>
   );

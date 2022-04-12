@@ -12,8 +12,7 @@ import { useState } from "react";
 import { UserProps } from "../../providers/user/types";
 
 export const Record = () => {
-  const { filterUser } = useUser();
-  const [patientID, setPatientID] = useState("");
+  const { filterUser, patientID, setPatientID } = useUser();
   const [patientSelect, setPatientSelect] = useState<string | any>(
     localStorage.getItem("patient")
   );
