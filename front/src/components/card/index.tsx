@@ -14,12 +14,11 @@ export const Card = (record: RecordCard) => {
   } = useRecord();
 
   const handleAttendanceReturn = () => {
-    setAttendanceList([...attendanceList, patient.name]);
+    setAttendanceList([...attendanceList, patient]);
     setAttendanceReturn(attendanceReturn + 1);
     const count = attendanceReturn;
     localStorage.setItem("@CliniMed:attendanceReturn", count.toString());
   };
-  console.log(record);
   return (
     <CardStyle>
       <div className="title">

@@ -14,30 +14,59 @@ export const InputModel = ({
       <div className="fields">
         <div className="fields">
           <div className="field">
-            <input
-              type="text"
-              placeholder="Problema"
-              name={
-                steps[currentStep].id === "SUBJECT"
-                  ? "subjectProblem"
-                  : steps[currentStep].id === "OBJECT"
-                  ? "objectProblem"
-                  : steps[currentStep].id === "ASSESSMENT"
-                  ? "assessmentProblem"
-                  : "planProblem"
-              }
-              onChange={handleInputChange}
-              value={
-                steps[currentStep].id === "SUBJECT"
-                  ? formValues.subjectProblem
-                  : steps[currentStep].id === "OBJECT"
-                  ? formValues.objectProblem
-                  : steps[currentStep].id === "ASSESSMENT"
-                  ? formValues.assessmentProblem
-                  : formValues.planProblem
-              }
-              required={true}
-            />
+            {steps[currentStep].id === "PLAN" ? (
+              <Select
+                placeholder="Plano"
+                options={[
+                  "Plano de saúde",
+                  "Unimed",
+                  "SulAmerica",
+                  "Bradesco",
+                  "Outros",
+                  "Particular",
+                ]}
+                onChange={handleInputChange}
+                name={
+                  steps[currentStep].id === "SUBJECT"
+                    ? "subjectProblem"
+                    : steps[currentStep].id === "OBJECT"
+                    ? "objectProblem"
+                    : steps[currentStep].id === "ASSESSMENT"
+                    ? "assessmentProblem"
+                    : "planProblem"
+                }
+                value={
+                  steps[currentStep].id === "SUBJECT"
+                    ? formValues.subjectProblem
+                    : steps[currentStep].id === "OBJECT"
+                    ? formValues.objectProblem
+                    : steps[currentStep].id === "ASSESSMENT"
+                    ? formValues.assessmentProblem
+                    : formValues.planProblem
+                }
+              />
+            ) : (
+              <input
+                type="text"
+                placeholder="Problema"
+                name={
+                  steps[currentStep].id === "SUBJECT"
+                    ? "subjectProblem"
+                    : steps[currentStep].id === "OBJECT"
+                    ? "objectProblem"
+                    : "assessmentProblem"
+                }
+                onChange={handleInputChange}
+                value={
+                  steps[currentStep].id === "SUBJECT"
+                    ? formValues.subjectProblem
+                    : steps[currentStep].id === "OBJECT"
+                    ? formValues.objectProblem
+                    : formValues.assessmentProblem
+                }
+                required={true}
+              />
+            )}
           </div>
           <div className="field">
             <Select

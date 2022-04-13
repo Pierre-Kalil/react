@@ -27,6 +27,7 @@ export const FormStyle = styled.div`
     select {
       width: 100%;
       padding: 10px;
+      margin: 2px 0;
     }
   }
 `;

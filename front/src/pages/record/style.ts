@@ -32,10 +32,16 @@ export const RecordContainer = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     width: 300px;
-    color: var(--white);
+    color: var(--dark);
 
     span {
-      color: var(--white);
+      display: flex;
+      align-items: center;
+      width: 197px;
+      padding: 4px;
+      transform: translateX(1px);
+      background: var(--white);
+      border-radius: 5px;
       font-weight: bold;
       font-size: 22px;
     }

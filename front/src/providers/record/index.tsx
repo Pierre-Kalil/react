@@ -13,8 +13,12 @@ const RecordContext = createContext<RecordProviderProps>(
 export const RecordProvider = ({ children }: AuthProviderProps) => {
   const [patientRecords, setPatientRecords] = useState<RecordProps[]>([]);
   const [openModal, setOpenModal] = useState(false);
-  const [attendance, setAttendance] = useState(0);
-  const [attendanceReturn, setAttendanceReturn] = useState(0);
+  const [attendance, setAttendance] = useState(
+    Number(localStorage.getItem("@CliniMed:attendance"))
+  );
+  const [attendanceReturn, setAttendanceReturn] = useState(
+    Number(localStorage.getItem("@CliniMed:attendanceReturn"))
+  );
   const [attendanceList, setAttendanceList] = useState(
     JSON.parse(localStorage.getItem("@CliniMed:attendanceList") || "[]")
   );

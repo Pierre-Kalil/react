@@ -18,6 +18,11 @@ export const Nav = styled.div`
     color: #fff;
     font-size: 22px;
   }
+  h2 {
+    color: var(--teal);
+    font-size: 34px;
+    font-weight: bold;
+  }
 
   @media (min-width: 768px) {
     justify-content: space-around;
