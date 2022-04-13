@@ -27,7 +27,7 @@ export const AttendanceCounter = () => {
           </div>
         </div>
         <div className="box-circle">
-          <span>Lista de clients</span>
+          <span>Pacientes atendidos</span>
           <div className="circle">
             {attendanceList.length > 1 ? (
               attendanceList.map((item) => <span>{item}</span>)

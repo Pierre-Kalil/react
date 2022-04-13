@@ -42,28 +42,31 @@ export const FormRecord = ({ patientSelect }: FormRecordProps) => {
     planComments: "",
   });
 
-  function handleInputChange(event: any) {
+  const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     console.log(formValues);
     setFormValues((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-  }
+  };
 
-  async function handleSubmit(e: any) {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    createRecord(formValues);
+    createRecord(
+      formValues,
+      JSON.parse(localStorage.getItem("@CliniMed:patientID") || "")
+    );
     setCurrentStep(0);
     setAttendance(attendance + 1);
     const count = attendance;
     localStorage.setItem("@CliniMed:attendance", count.toString());
-  }
+  };
 
   return (
     <>
       <FormStyle>
-        {patientSelect.name.length < 1 ? <FormBlock /> : <></>}
+        {patientSelect.length < 1 ? <FormBlock /> : <></>}
         <form className="steps-form" onSubmit={handleSubmit}>
           <div className="fields-container">
             <p>{steps[currentStep].title}</p>

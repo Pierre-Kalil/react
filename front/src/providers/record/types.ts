@@ -25,7 +25,7 @@ export interface RecordProps {
 }
 
 export interface RecordProviderProps {
-  createRecord: (data: DataRecordProps) => void;
+  createRecord: (data: DataRecordProps, userId: string) => void;
   filterRecords: (id: string) => void;
   patientRecords: RecordProps[];
   openModal: boolean;

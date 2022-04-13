@@ -1,42 +1,30 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import api from "../../services/api";
-import { useAuth } from "../auth";
 import { AuthProviderProps } from "../auth/types";
 import { UserProps } from "./types";
 
 const UserContext = createContext<UserProps>({} as UserProps);
 
 export const UserProvider = ({ children }: AuthProviderProps) => {
-  const { token } = useAuth();
-  const [patientID, setPatientID] = useState(
-    localStorage.getItem("@CliniMed:patientID") || ""
+  const [patient, setPatient] = useState(
+    localStorage.getItem("@CliniMed:patientName") || ""
   );
-  const [patient, setPatient] = useState({
-    id: "",
-    name: "",
-    email: "",
-    password: "",
-  });
+
   const filterUser = async () => {
     await api
-      .get(`/user/${patientID}`)
+      .get(
+        `/user/${JSON.parse(localStorage.getItem("@CliniMed:patientID") || "")}`
+      )
       .then((res) => {
-        setPatient(res.data);
+        localStorage.setItem("@CliniMed:patientName", res.data.name);
+        setPatient(res.data.name);
       })
-      .catch((_) => console.log("Paciente não localizado."));
+      .catch((_) => toast.error("Paciente não localizado"));
   };
 
-  useEffect(() => {
-    if (token) {
-      filterUser();
-    }
-  }, [token]);
-  console.log(patient);
   return (
-    <UserContext.Provider
-      value={{ filterUser, patient, patientID, setPatientID }}
-    >
+    <UserContext.Provider value={{ filterUser, patient }}>
       {children}
     </UserContext.Provider>
   );

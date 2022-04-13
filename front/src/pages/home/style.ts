@@ -60,3 +60,18 @@ export const HomeContent = styled.div`
     min-height: 80vh;
   }
 `;
+
+export const HomeContainerSpelcialty = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: auto;
+  background: rgba(0, 123, 245, 100);
+  z-index: 1;
+  position: relative;
+
+  @media (min-width: 768px) {
+    background-position: center;
+    height: auto;
+  }
+`;

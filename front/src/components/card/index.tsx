@@ -19,32 +19,32 @@ export const Card = (record: RecordCard) => {
     const count = attendanceReturn;
     localStorage.setItem("@CliniMed:attendanceReturn", count.toString());
   };
-
+  console.log(record);
   return (
     <CardStyle>
-      <div>
+      <div className="title">
         <h2>Subjetivo</h2>
-        {record.record.subject.problem}
-        {record.record.subject.situation}
-        {record.record.subject.comments}
+        <p>{record.record.subject.problem}</p>
+        <p>{record.record.subject.situation ? "Ativo" : "Encerrado"}</p>
+        <p>{record.record.subject.comments}</p>
       </div>
-      <div>
+      <div className="title">
         <h2>Objetivo</h2>
-        {record.record.object.problem}
-        {record.record.object.situation}
-        {record.record.object.comments}
+        <p>{record.record.object.problem}</p>
+        <p>{record.record.object.situation ? "Ativo" : "Encerrado"}</p>
+        <p>{record.record.object.comments}</p>
       </div>
-      <div>
+      <div className="title">
         <h2>Situação</h2>
-        {record.record.assessment.problem}
-        {record.record.assessment.situation}
-        {record.record.assessment.comments}
+        <p>{record.record.assessment.problem}</p>
+        <p>{record.record.assessment.situation ? "Ativo" : "Encerrado"}</p>
+        <p>{record.record.assessment.comments}</p>
       </div>
-      <div>
+      <div className="title">
         <h2>Plano</h2>
-        {record.record.plan.problem}
-        {record.record.plan.situation}
-        {record.record.plan.comments}
+        <p>{record.record.plan.problem}</p>
+        <p>{record.record.plan.situation ? "Ativo" : "Encerrado"}</p>
+        <p>{record.record.plan.comments}</p>
       </div>
       <Button name="Atualizar" callback={handleAttendanceReturn}></Button>
     </CardStyle>

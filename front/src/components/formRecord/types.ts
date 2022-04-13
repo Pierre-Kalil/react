@@ -25,5 +25,5 @@ export interface InputModelProps {
 }
 
 export interface FormRecordProps {
-  patientSelect: { id: string; name: string; email: string; password: string };
+  patientSelect: string;
 }

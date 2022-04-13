@@ -14,24 +14,25 @@ import { ModalRecords } from "../../components/modalRecords";
 
 export const Record = () => {
   const { filterRecords, openModal, setOpenModal } = useRecord();
-  const { filterUser, patient, patientID } = useUser();
+  const { filterUser, patient } = useUser();
   const [seletcted, setSelected] = useState("");
 
   const handleId = () => {
-    localStorage.setItem("@CliniMed:patientID", seletcted);
-    filterUser();
+    localStorage.setItem("@CliniMed:patientID", JSON.stringify(seletcted));
     setSelected("");
   };
 
   const handleModal = () => {
-    filterRecords(patientID);
+    filterRecords(
+      JSON.parse(localStorage.getItem("@CliniMed:patientID") || "")
+    );
     setOpenModal(true);
   };
 
   useEffect(() => {
     filterUser();
   }, [seletcted]);
-  console.log(!patientID);
+
   return (
     <>
       <HomeContainerMain>
@@ -41,9 +42,9 @@ export const Record = () => {
         <HomeContent>
           <RecordContainer>
             <div className="search">
-              {!!patientID ? (
+              {patient ? (
                 <div className="search patient-box">
-                  <span>{patient.name}</span>
+                  <span>{patient}</span>
                   <Button name="Consultas" callback={handleModal}>
                     Consultas
                   </Button>
