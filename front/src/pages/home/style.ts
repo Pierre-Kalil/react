@@ -63,15 +63,69 @@ export const HomeContent = styled.div`
 
 export const HomeContainerSpelcialty = styled.div`
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 60vh;
+  height: auto;
+  background: var(--white);
+  z-index: 1;
+  color: var(--dark);
+
+  h2 {
+    width: 200px;
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: var(--orange);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    li {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    background-position: center;
+    height: auto;
+  }
+`;
+
+export const HomeContainerComments = styled.div`
+  display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+
+  min-height: 60vh;
   height: auto;
   background: rgba(0, 123, 245, 100);
   z-index: 1;
   position: relative;
 
-  @media (min-width: 768px) {
-    background-position: center;
-    height: auto;
+  img {
+    width: 150px;
+  }
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 250px;
+    span {
+      width: 120px;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: 425px) {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
