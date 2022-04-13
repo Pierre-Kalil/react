@@ -10,7 +10,7 @@ export const NavBar = () => {
         <div>
           {user.name.length === 0 ? (
             <>
-              <h2>ClinMed</h2>
+              <h2>CliniMed</h2>
             </>
           ) : (
             <>
