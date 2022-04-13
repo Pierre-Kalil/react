@@ -121,6 +121,7 @@ export const HomeContainerComments = styled.div`
     span {
       width: 120px;
       text-align: center;
+      color: var(--white);
     }
   }
 

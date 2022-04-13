@@ -24,15 +24,14 @@ export const Home = () => {
       </HomeContainerMain>
       <HomeContainerSpelcialty>
         <div>
-          <h2>Mais de 20 opções de especialidades</h2>
-          <h3>Dentre essas:</h3>
+          <h2>Nossas especialidades</h2>
         </div>
         <div>
           <ul>
             <li>Cardiologia</li>
             <li>Pneumologista</li>
             <li>Dermatologista</li>
-            <li>Clinico geral</li>
+            <li>Clínico geral</li>
           </ul>
         </div>
       </HomeContainerSpelcialty>
@@ -43,11 +42,11 @@ export const Home = () => {
         </div>
         <div className="comments">
           <img src={Avatar} alt="" />
-          <span>Bom ambiente e bom atendimento, sem filas de espera</span>
+          <span>Ambiente agradável e bom atendimento, sem filas de espera</span>
         </div>
         <div className="comments">
           <img src={Avatar} alt="" />
-          <span>Certamente recomento, não troco mais de clinica</span>
+          <span>Certamente recomendo, não troco mais de clinica</span>
         </div>
       </HomeContainerComments>
     </>
