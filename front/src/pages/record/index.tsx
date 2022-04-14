@@ -1,6 +1,5 @@
 import { NavBar } from "../../components/navBar";
 import { RecordContainer } from "./style";
-import { FormRecord } from "../../components/formRecord";
 import {
   HomeContainerMain,
   HomeContent,
@@ -11,9 +10,16 @@ import { useUser } from "../../providers/user";
 import { useEffect, useState } from "react";
 import { useRecord } from "../../providers/record";
 import { ModalRecords } from "../../components/modalRecords";
+import { FormRecordNew } from "../../components/formRecordnew";
 
 export const Record = () => {
-  const { filterRecords, openModal, setOpenModal } = useRecord();
+  const {
+    filterRecords,
+    openModal,
+    setOpenModal,
+    setOpenModalForm,
+    openModalForm,
+  } = useRecord();
   const { filterUser, patient } = useUser();
   const [seletcted, setSelected] = useState("");
 
@@ -32,26 +38,17 @@ export const Record = () => {
   useEffect(() => {
     filterUser();
   }, [seletcted]);
-
+  console.log(patient);
   return (
     <>
       <HomeContainerMain>
         {openModal ? <ModalRecords /> : <></>}
+        {openModalForm ? <FormRecordNew /> : <></>}
         <NavBar />
         <HomeImageBackground />
         <HomeContent>
           <RecordContainer>
             <div className="search">
-              {patient ? (
-                <div className="search patient-box">
-                  <span>{patient}</span>
-                  <Button name="Consultas" callback={handleModal}>
-                    Consultas
-                  </Button>
-                </div>
-              ) : (
-                <></>
-              )}
               <div className="search input">
                 <input
                   value={seletcted}
@@ -63,8 +60,23 @@ export const Record = () => {
                   Buscar
                 </Button>
               </div>
+              {patient ? (
+                <div className="search patient-box">
+                  <span>{patient}</span>
+                  <Button name="Prontuários" callback={handleModal}>
+                    Consultas
+                  </Button>
+                  <Button
+                    name="Novo Prontuário"
+                    callback={() => setOpenModalForm(true)}
+                  >
+                    Consultas
+                  </Button>
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
-            <FormRecord patientSelect={patient} />
           </RecordContainer>
         </HomeContent>
       </HomeContainerMain>

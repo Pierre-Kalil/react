@@ -36,4 +36,6 @@ export interface RecordProviderProps {
   setAttendanceReturn: Dispatch<SetStateAction<number>>;
   attendanceList: string[];
   setAttendanceList: Dispatch<SetStateAction<string[]>>;
+  openModalForm: boolean;
+  setOpenModalForm: Dispatch<SetStateAction<boolean>>;
 }

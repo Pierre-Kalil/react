@@ -23,27 +23,55 @@ export const Card = (record: RecordCard) => {
     <CardStyle>
       <div className="title">
         <h2>Subjetivo</h2>
-        <p>{record.record.subject.problem}</p>
-        <p>{record.record.subject.situation ? "Ativo" : "Encerrado"}</p>
-        <p>{record.record.subject.comments}</p>
+        <p>
+          <span>Problema:</span> {record.record.subject.problem}
+        </p>
+        <p>
+          <span>Situação:</span>{" "}
+          {record.record.subject.situation ? "Ativo" : "Encerrado"}
+        </p>
+        <p>
+          <span>Observações:</span> {record.record.subject.comments}
+        </p>
       </div>
       <div className="title">
         <h2>Objetivo</h2>
-        <p>{record.record.object.problem}</p>
-        <p>{record.record.object.situation ? "Ativo" : "Encerrado"}</p>
-        <p>{record.record.object.comments}</p>
+        <p>
+          <span>Problema:</span> {record.record.object.problem}
+        </p>
+        <p>
+          <span>Situação:</span>{" "}
+          {record.record.object.situation ? "Ativo" : "Encerrado"}
+        </p>
+        <p>
+          <span>Observações:</span> {record.record.object.comments}
+        </p>
       </div>
       <div className="title">
-        <h2>Situação</h2>
-        <p>{record.record.assessment.problem}</p>
-        <p>{record.record.assessment.situation ? "Ativo" : "Encerrado"}</p>
-        <p>{record.record.assessment.comments}</p>
+        <h2>Avaliação</h2>
+        <p>
+          <span>Problema:</span> {record.record.assessment.problem}
+        </p>
+        <p>
+          <span>Situação:</span>{" "}
+          {record.record.assessment.situation ? "Ativo" : "Encerrado"}
+        </p>
+        <p>
+          <span>Observações:</span> {record.record.assessment.comments}
+        </p>
       </div>
       <div className="title">
         <h2>Plano</h2>
-        <p>{record.record.plan.problem}</p>
-        <p>{record.record.plan.situation ? "Ativo" : "Encerrado"}</p>
-        <p>{record.record.plan.comments}</p>
+        <p>
+          <span>Problema:</span> {record.record.plan.problem}
+        </p>
+        <p>
+          <span>Situação:</span>{" "}
+          {record.record.plan.situation ? "Ativo" : "Encerrado"}
+        </p>
+        <p>
+          <span>Observações:</span> {record.record.plan.comments}
+        </p>
       </div>
       <Button name="Atualizar" callback={handleAttendanceReturn}></Button>
     </CardStyle>

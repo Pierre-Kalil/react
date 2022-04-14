@@ -13,6 +13,7 @@ const RecordContext = createContext<RecordProviderProps>(
 export const RecordProvider = ({ children }: AuthProviderProps) => {
   const [patientRecords, setPatientRecords] = useState<RecordProps[]>([]);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalForm, setOpenModalForm] = useState(false);
   const [attendance, setAttendance] = useState(
     Number(localStorage.getItem("@CliniMed:attendance"))
   );
@@ -83,6 +84,8 @@ export const RecordProvider = ({ children }: AuthProviderProps) => {
         setAttendanceReturn,
         attendanceList,
         setAttendanceList,
+        openModalForm,
+        setOpenModalForm,
       }}
     >
       {children}

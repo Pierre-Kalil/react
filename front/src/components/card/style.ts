@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const CardStyle = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 200px;
-  height: 450px;
-  margin: 5px;
-  padding: 10px 15px;
+  flex-wrap: wrap;
+  width: 90%;
+  height: auto;
+  min-height: 80vh;
+  margin: 35px 0;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   background-color: var(--white);
@@ -17,11 +18,30 @@ export const CardStyle = styled.div`
   .title {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
+    min-height: 150px;
+    margin: 2px;
+    padding: 2px;
+
+    overflow-y: scroll;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    span {
+      font-weight: bold;
+    }
 
     h2 {
-      color: var(--orange);
+      color: var(--black);
+      background: var(--gray);
+    }
+
+    @media (min-width: 768px) {
+      width: 48%;
+      min-height: 200px;
     }
   }
 `;

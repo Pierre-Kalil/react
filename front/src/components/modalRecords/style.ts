@@ -6,8 +6,8 @@ export const ModalStyle = styled.div`
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  height: auto;
   min-height: 100vh;
+  height: auto;
   background: var(--grayStandOut);
   z-index: 5;
   position: absolute;

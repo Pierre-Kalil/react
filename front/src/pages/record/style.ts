@@ -19,31 +19,34 @@ export const RecordContainer = styled.div`
       border: none;
       border-radius: 5px;
     }
+    button {
+      width: 100px;
+      height: 33px;
+      margin-left: 2px;
+      background: var(--teal);
+    }
   }
-  .search button {
-    width: 100px;
-    height: 33px;
-    margin-left: 2px;
-    background: var(--teal);
-  }
-
   .patient-box {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 300px;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 200px;
+    height: 150px;
+    background: var(--white);
     color: var(--dark);
+    border-radius: 5px;
 
     span {
-      display: flex;
       align-items: center;
-      width: 197px;
       padding: 4px;
-      transform: translateX(1px);
-      background: var(--white);
-      border-radius: 5px;
       font-weight: bold;
       font-size: 22px;
+    }
+    button {
+      width: 150px;
+      height: 33px;
+      margin-left: 2px;
+      background: var(--darkGreen);
     }
   }
 `;
